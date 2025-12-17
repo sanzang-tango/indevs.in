@@ -7,7 +7,7 @@ import { Privacy } from './pages/legal/Privacy';
 import { AUP } from './pages/legal/AUP';
 import { Abuse } from './pages/legal/Abuse';
 import { About } from './pages/About';
-import { Changelog } from './pages/Changelog';
+
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 // import Dashboard from './pages/Dashboard';
@@ -41,7 +41,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/docs" element={<Docs />} />
           <Route path="/about" element={<About />} />
-          <Route path="/changelog" element={<Changelog />} />
+
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route element={<ProtectedRoute><DashboardLayout /></ProtectedRoute>}>

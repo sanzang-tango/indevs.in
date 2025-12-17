@@ -39,7 +39,7 @@ export function Footer() {
                             <h4 className="font-bold text-sm mb-3 text-white">Platform</h4>
                             <ul className="space-y-2 text-xs">
                                 <li><a href="/docs" className="text-[#E5E3DF] hover:text-[#FF6B35] transition-colors">Documentation</a></li>
-                                <li><a href="/changelog" className="text-[#E5E3DF] hover:text-[#FF6B35] transition-colors">Changelog</a></li>
+
                                 <li><a href="/about" className="text-[#E5E3DF] hover:text-[#FF6B35] transition-colors">About</a></li>
                             </ul>
                         </div>

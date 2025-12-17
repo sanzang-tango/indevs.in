@@ -10,7 +10,8 @@ export default function Signup() {
         // In a real app, you might want to store the name in session/local storage 
         // to attach it to the user after oauth callback, or pass it as state.
         localStorage.setItem("signupName", name);
-        window.location.href = "http://localhost:5000/auth/github";
+        const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+        window.location.href = `${API_URL}/auth/github`;
     };
 
     return (
@@ -51,8 +52,8 @@ export default function Signup() {
                         onClick={handleGithubSignup}
                         disabled={!name.trim()}
                         className={`w-full flex items-center justify-center gap-3 bg-[#1A1A1A] text-white py-3 rounded-lg font-bold transition-all duration-200 ${!name.trim()
-                                ? "opacity-50 cursor-not-allowed"
-                                : "hover:shadow-[4px_4px_0px_0px_#FFD23F] hover:-translate-y-0.5"
+                            ? "opacity-50 cursor-not-allowed"
+                            : "hover:shadow-[4px_4px_0px_0px_#FFD23F] hover:-translate-y-0.5"
                             }`}
                     >
                         <Github className="w-5 h-5" />
