@@ -171,13 +171,13 @@ export default function MyDomains() {
             </div>
 
             <div className="bg-white rounded-xl border-2 border-[#E5E3DF] overflow-hidden shadow-sm">
-                <table className="w-full text-left border-collapse table-fixed">
+                <table className="w-full text-left border-collapse">
                     <thead className="bg-[#f9f9f9] border-b-2 border-[#E5E3DF]">
                         <tr>
-                            <th className="p-6 text-xs font-bold text-[#888] uppercase tracking-wider w-4/12">Domain Information</th>
-                            <th className="p-6 text-xs font-bold text-[#888] uppercase tracking-wider hidden md:table-cell w-3/12">Nameservers</th>
-                            <th className="p-6 text-xs font-bold text-[#888] uppercase tracking-wider w-2/12">Status / Expiry</th>
-                            <th className="p-6 text-right w-3/12"></th>
+                            <th className="p-4 md:p-6 text-xs font-bold text-[#888] uppercase tracking-wider w-full md:w-5/12">Domain Information</th>
+                            <th className="p-4 md:p-6 text-xs font-bold text-[#888] uppercase tracking-wider hidden md:table-cell md:w-3/12">Nameservers</th>
+                            <th className="p-4 md:p-6 text-xs font-bold text-[#888] uppercase tracking-wider hidden md:table-cell md:w-2/12">Status / Expiry</th>
+                            <th className="p-4 md:p-6 text-right w-auto md:w-2/12"></th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-[#E5E3DF]">
@@ -190,15 +190,20 @@ export default function MyDomains() {
                             </tr>
                         ) : subdomains.map((domain) => (
                             <tr key={domain._id} className="group hover:bg-gray-50 transition-colors">
-                                <td className="p-6 overflow-hidden">
+                                <td className="p-4 md:p-6 overflow-hidden">
                                     <div className="flex flex-col min-w-0">
                                         <div className="font-bold text-[#1A1A1A] text-lg flex items-start gap-2 max-w-full">
                                             <Globe className="w-4 h-4 flex-shrink-0 mt-1.5" />
-                                            <span className="break-all">
+                                            <span className="truncate md:break-words">
                                                 {domain.name}.indevs.in
                                             </span>
                                         </div>
                                         <span className="text-xs text-[#888] font-mono mt-1">ID: {domain._id}</span>
+
+                                        {/* Mobile Status View */}
+                                        <div className="md:hidden mt-2 space-y-2">
+                                            <StatusBadge status={domain.status} />
+                                        </div>
 
                                         {/* Expiry warning */}
                                         {domain.expiresAt && (() => {
@@ -214,7 +219,7 @@ export default function MyDomains() {
                                         })()}
                                     </div>
                                 </td>
-                                <td className="p-6 hidden md:table-cell overflow-hidden">
+                                <td className="p-4 md:p-6 hidden md:table-cell overflow-hidden">
                                     <div className="flex flex-col gap-1">
                                         {domain.recordType === 'NS' && domain.recordValue ? (
                                             domain.recordValue.split(',').map((ns, idx) => (
@@ -233,7 +238,7 @@ export default function MyDomains() {
                                         )}
                                     </div>
                                 </td>
-                                <td className="p-6 whitespace-nowrap">
+                                <td className="p-4 md:p-6 whitespace-nowrap hidden md:table-cell">
                                     <div className="space-y-2">
                                         <StatusBadge status={domain.status} />
                                         <div className="flex items-center gap-1.5 text-xs text-[#4A4A4A] font-medium">
@@ -242,7 +247,7 @@ export default function MyDomains() {
                                         </div>
                                     </div>
                                 </td>
-                                <td className="p-6 text-right whitespace-nowrap">
+                                <td className="p-4 md:p-6 text-right whitespace-nowrap">
                                     <div className="flex justify-end gap-2">
                                         <Button
                                             size="sm"
